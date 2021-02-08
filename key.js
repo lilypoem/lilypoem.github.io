@@ -124,7 +124,7 @@ export class Key {
   }
 
   drawText(ctx, color, keyname) {
-    ctx.font = "2.5vh malgun gothic";
+    ctx.font = "1.5vw malgun gothic";
     ctx.fillStyle = color;
     ctx.fillText(
       keyname,
