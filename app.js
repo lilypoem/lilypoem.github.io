@@ -47,7 +47,6 @@ class App {
   }
 
   animate(t) {
-    this.inputbox.focus();
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
     for (var i = 0; i < keybind.length; i++) {
       this.key.drawKey(
@@ -87,6 +86,7 @@ class App {
       this.stageHeight
     );
     this.onClicked = true;
+    this.inputbox.focus();
   }
 
   onKeyDown(e) {
@@ -111,6 +111,7 @@ class App {
       this.stageWidth,
       this.stageHeight
     );
+    this.inputbox.focus();
   }
   onKeyUp(e) {
     this.keyname = "";
