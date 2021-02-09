@@ -14,6 +14,7 @@ class App {
 
     this.angle = 0;
     this.onClicked = false;
+    this.onKeyDowned = false;
     this.fontcolor = `rgba(14,241,254, 1)`;
     this.keyname = "";
     this.keycode = "";
@@ -54,9 +55,9 @@ class App {
         keybind[i][1]
       );
     }
-    if (this.onClicked) {
-      this.background.clickLight(this.ctx, this.stageWidth, this.stageHeight);
-    }
+
+    this.background.clickLight(this.ctx, this.stageWidth, this.stageHeight);
+
     for (var i = 0; i < keybind.length; i++) {
       if (
         keybind[i][2] == this.keyname ||
@@ -88,11 +89,30 @@ class App {
   onKeyDown(e) {
     this.keyname = e.key;
     this.keycode = e.code;
-    console.log(e);
+    this.onKeyDowned = true;
+    for (var i = 0; i < keybind.length; i++) {
+      if (
+        keybind[i][2] == this.keyname ||
+        this.keycode == "Key" + keybind[i][2]
+      ) {
+        this.centerLocate = this.key.locateKey(
+          this.stageWidth,
+          this.stageHeight,
+          keybind[i][0]
+        );
+      }
+    }
+    this.background.start(
+      this.centerLocate[0],
+      this.centerLocate[1],
+      this.stageWidth,
+      this.stageHeight
+    );
   }
   onKeyUp(e) {
     this.keyname = "";
     this.keycode = "";
+    this.onKeyDowned = false;
   }
 }
 

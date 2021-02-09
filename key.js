@@ -114,9 +114,9 @@ export class Key {
 
     this.centerX = this.x + 0.5 * this.width;
     this.centerY = this.y + 0.5 * this.keylen;
-  }
 
-  drawBackground() {}
+    return [this.centerX, this.centerY];
+  }
 
   drawKey(ctx, color) {
     ctx.fillStyle = color;
