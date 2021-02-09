@@ -47,7 +47,9 @@ class App {
   }
 
   animate(t) {
-    this.inputbox.focus();
+    if (this.inputbox !== null) {
+      this.inputbox.focus();
+    }
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
     for (var i = 0; i < keybind.length; i++) {
       this.key.drawKey(
@@ -79,6 +81,9 @@ class App {
   }
 
   onClick(e) {
+    if (this.inputbox !== null) {
+      this.inputbox.focus();
+    }
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
     this.background.start(
       e.offsetX,
