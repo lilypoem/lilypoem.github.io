@@ -4,6 +4,8 @@ import keybind from "./keybind.js";
 
 class App {
   constructor() {
+    this.inputbox = document.createElement("input");
+    document.body.appendChild(this.inputbox);
     this.canvas = document.createElement("canvas");
     document.body.appendChild(this.canvas);
     this.ctx = this.canvas.getContext("2d");
@@ -45,6 +47,7 @@ class App {
   }
 
   animate(t) {
+    this.inputbox.focus();
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
     for (var i = 0; i < keybind.length; i++) {
       this.key.drawKey(
