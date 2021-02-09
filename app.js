@@ -75,6 +75,7 @@ class App {
       this.key.locateKey(this.stageWidth, this.stageHeight, keybind[i][0]);
       this.key.drawKey(this.ctx, keybind[i][1]);
       this.key.drawText(this.ctx, this.fontcolor, keybind[i][2]);
+      this.key.drawCode(this.ctx, keybind[i][1], keybind[i][3]);
     }
 
     window.requestAnimationFrame(this.animate.bind(this));
@@ -109,6 +110,16 @@ class App {
           this.stageHeight,
           keybind[i][0]
         );
+        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        var oscillator = audioCtx.createOscillator();
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(
+          keybind[i][4],
+          audioCtx.currentTime
+        ); // value in hertz
+        oscillator.connect(audioCtx.destination);
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.2);
       }
     }
     this.background.start(

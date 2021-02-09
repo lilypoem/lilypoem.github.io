@@ -126,7 +126,16 @@ export class Key {
   drawText(ctx, color, keyname) {
     ctx.font = "1.8vw malgun gothic";
     ctx.fillStyle = color;
+    var exptext = /[^0-9]/g;
     if (keyname.length > 1) {
+      keyname = "";
+    }
+    if (
+      !exptext.test(keyname) ||
+      keyname == "`" ||
+      keyname == "-" ||
+      keyname == "="
+    ) {
       keyname = "";
     }
     if (keyname == "tab") {
@@ -137,5 +146,16 @@ export class Key {
       this.x + this.padding,
       this.y + this.keylen - this.padding
     );
+  }
+
+  drawCode(ctx, color, keyname) {
+    ctx.font = "1.8vw malgun gothic";
+    if (color == "#050A30") {
+      ctx.fillStyle = "#EEEDE7";
+    }
+    if (color == "#EEEDE7") {
+      ctx.fillStyle = "#66595E";
+    }
+    ctx.fillText(keyname, this.centerX, this.y + 1.7 * this.padding);
   }
 }
