@@ -83,7 +83,6 @@ class App {
       this.stageHeight
     );
     this.onClicked = true;
-    textarea.focus();
   }
 
   onKeyDown(e) {
