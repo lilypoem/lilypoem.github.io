@@ -124,8 +124,14 @@ export class Key {
   }
 
   drawText(ctx, color, keyname) {
-    ctx.font = "1.5vw malgun gothic";
+    ctx.font = "1.8vw malgun gothic";
     ctx.fillStyle = color;
+    if (keyname.length > 1) {
+      keyname = "";
+    }
+    if (keyname == "tab") {
+      keyname = "tab";
+    }
     ctx.fillText(
       keyname,
       this.x + this.padding,

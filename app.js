@@ -47,6 +47,7 @@ class App {
   }
 
   animate(t) {
+    this.inputbox.focus();
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
     for (var i = 0; i < keybind.length; i++) {
       this.key.drawKey(
@@ -86,7 +87,6 @@ class App {
       this.stageHeight
     );
     this.onClicked = true;
-    this.inputbox.focus();
   }
 
   onKeyDown(e) {
@@ -96,7 +96,8 @@ class App {
     for (var i = 0; i < keybind.length; i++) {
       if (
         keybind[i][2] == this.keyname ||
-        this.keycode == "Key" + keybind[i][2]
+        this.keycode == "Key" + keybind[i][2] ||
+        this.keycode == keybind[i][2]
       ) {
         this.centerLocate = this.key.locateKey(
           this.stageWidth,
@@ -111,7 +112,7 @@ class App {
       this.stageWidth,
       this.stageHeight
     );
-    this.inputbox.focus();
+    console.log(e);
   }
   onKeyUp(e) {
     this.keyname = "";
